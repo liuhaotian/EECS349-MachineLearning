@@ -1,4 +1,4 @@
 all: test
-	echo "hi"
+	
 test:
-	matlab -nojvm -nodisplay -nosplash -r test
+	matlab -nojvm -nodisplay -nosplash -r test | tail -n +11
