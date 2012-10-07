@@ -17,7 +17,7 @@ function [ret] = decisiontree (inputFileName, trainingSetSize, numberOfTrials, v
 
 	%	form matrix
 	matrix = ones(length(data) - 1, length(data{1}));
-	for i = 2:length(data)
+	for i = 2:length(data)-1
 		for j = 1:length(data{1})
 			matrix(i,j) = strcmp(data{i}{j},'true');
 		end
