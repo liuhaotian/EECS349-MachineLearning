@@ -13,7 +13,7 @@ function [ret] = decisiontree (inputFileName, trainingSetSize, numberOfTrials, v
 		data = [data, textscan(tempdata,'%s')];
 		tempdata = fgetl(fd_in);
 	end
-	tempdata = fclose(fd_in)
+	tempdata = fclose(fd_in);
 
 	%	form matrix
 	matrix = ones(length(data) - 1, length(data{1}));
@@ -34,9 +34,9 @@ function [ret] = decisiontree (inputFileName, trainingSetSize, numberOfTrials, v
 	testingset  = [];
 	for i = 1:length(tempdata)
 		if tempdata(i) == 1
-			trainingset = [trainingset; matrix(i,:)]
+			trainingset = [trainingset; matrix(i,:)];
 		else
-			testingset = [testingset; matrix(i,:)]
+			testingset = [testingset; matrix(i,:)];
 		end
 	end
 
