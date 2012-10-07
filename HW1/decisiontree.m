@@ -18,8 +18,3 @@ function decisiontree (inputFileName, trainingSetSize, numberOfTrials, verbose)
 
 
 end
-
-
-
-
-exit
