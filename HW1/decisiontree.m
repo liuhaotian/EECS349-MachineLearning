@@ -6,5 +6,15 @@ function decisiontree (inputFileName, trainingSetSize, numberOfTrials, verbose)
 
 
 
+	fd_in	= fopen(inputFileName);
+	while tempdata=fgetl(fd_in)
+		data = [data, textscan(tempdata,'%s')]
+	end
+	fclose(fd_in)
+
+end
+
+
+
 
 exit
