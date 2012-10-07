@@ -31,14 +31,25 @@ function [ret] = decisiontree (inputFileName, trainingSetSize, numberOfTrials, v
 
 	%	training set & testing set
 	trainingset = [];
+	temptrainingset = data{1}
 	testingset  = [];
+	temptestingset = data{1}
 	for i = 1:length(tempdata)
 		if tempdata(i) == 1
 			trainingset = [trainingset; matrix(i,:)];
+			temptrainingset = [temptestingset; data{i+1}]
 		else
 			testingset = [testingset; matrix(i,:)];
+			temptestingset = [temptestingset; data{i+1}]
 		end
 	end
+	if verbose == '1'
+		disp('Training Set:');
+		disp(temptrainingset);
+		disp('Testing Set:');
+		disp(temptestingset);
+	end
+
 
 	ret = 0;
 end
