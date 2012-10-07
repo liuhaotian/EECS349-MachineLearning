@@ -84,7 +84,7 @@ function decisiontree (inputFileName, trainingSetSize, numberOfTrials, verbose)
 		
 		%	verbose debug
 		if verbose == '1'
-			disp('\nTraining Set:');
+			disp(sprintf('\nTraining Set:'));
 			disp(temptrainingset);
 			disp('Testing Set:');
 			disp(temptestingset);
