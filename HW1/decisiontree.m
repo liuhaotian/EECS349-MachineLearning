@@ -40,5 +40,5 @@ function [ret] = decisiontree (inputFileName, trainingSetSize, numberOfTrials, v
 		end
 	end
 
-	return 0;
+	ret = 0;
 end
