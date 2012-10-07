@@ -56,7 +56,7 @@ function decisiontree (inputFileName, trainingSetSize, numberOfTrials, verbose)
 
 		%	print tree
 		disp('Decision Tree:');
-		printtree(root, '\t|', data{1});
+		printtree(root, '|', data{1});
 
 
 		%	calc all
