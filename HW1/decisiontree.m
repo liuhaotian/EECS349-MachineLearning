@@ -94,14 +94,14 @@ function decisiontree (inputFileName, trainingSetSize, numberOfTrials, verbose)
 		total = length(testingset);
 		numofcurrect = 0;
 		for i = 1:total
-			numofcurrect = numofcurrect + classify(root, testingset(i,:));
+			numofcurrect = numofcurrect + (classify(root, testingset(i,:)) == testingset(i,length(testingset(1,:))));
 		end
 		disp(sprintf('ID3 Correctnes: %d/%d', numofcurrect, total));
 		gid3 = gid3 + total;
 		gid3hit = gid3hit + numofcurrect;
 
 	end
-	disp('\n=========== Performance ==========');
-	disp(sprintf('Mean perf for ID3: %.2f', gid3hit/gid3));
+	disp(sprintf('\n=========== Performance =========='));
+	disp(sprintf('Mean perf for ID3  : %.2f', gid3hit/gid3));
 	disp(sprintf('Mean perf for Prior: %.2f', gprihit/gpri));
 end
