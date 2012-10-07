@@ -1,5 +1,6 @@
 function ret = best (examples, attributes, target_attr)
 	max = 0;
+	ret = attributes(1);
 	for attr = attributes
 		if gain(examples, attr, target_attr) > max
 			ret = attr;
