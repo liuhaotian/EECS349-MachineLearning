@@ -1,8 +1,8 @@
 function root = id3 (examples, attributes, target_attr)
 	root = treenode;
-	if sum(examples(:,target_attr) > 0) == length(examples)
+	if sum(examples(:,target_attr) > 0) == length(examples(:,1))
 		root.label = 1;
-	elseif sum(examples(:,target_attr) < 1) == length(examples)
+	elseif sum(examples(:,target_attr) < 1) == length(examples(:,1))
 		root.label = 0;
 	elseif isempty(attributes)
 		root.label = sum(examples(:,target_attr) > 0) > sum(examples(:,target_attr) < 1);
