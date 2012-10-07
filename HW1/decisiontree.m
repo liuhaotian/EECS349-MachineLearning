@@ -20,9 +20,9 @@ function decisiontree (inputFileName, trainingSetSize, numberOfTrials, verbose)
 	for i = 2:length(data)
 		for j = 1:length(data{1})
 			if strcmp(data{i}{j},'true')
-				matrix(i,j) = 1;
+				matrix(i-1,j) = 1;
 			else
-				matrix(i,j) = 0;
+				matrix(i-1,j) = 0;
 			end
 		end
 	end
