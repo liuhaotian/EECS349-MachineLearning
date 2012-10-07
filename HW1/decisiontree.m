@@ -15,6 +15,16 @@ function decisiontree (inputFileName, trainingSetSize, numberOfTrials, verbose)
 	end
 	tempdata = fclose(fd_in)
 
-
+	%	form matrix
+	matrix = ones(length(data) - 1, length(data{1}))
+	for i = 2:length(data)
+		for j = 1:length(data{1})
+			if data{i}{j} == 'true'
+				matrix(i,j) = 1;
+			else
+				matrix(i,j) = 0;
+			end
+		end
+	end
 
 end
