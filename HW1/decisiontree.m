@@ -37,7 +37,7 @@ function [ret] = decisiontree (inputFileName, trainingSetSize, numberOfTrials, v
 	for i = 1:length(tempdata)
 		if tempdata(i) == 1
 			trainingset = [trainingset; matrix(i,:)];
-			temptrainingset = [temptestingset; transpose(data{i+1})];
+			temptrainingset = [temptrainingset; transpose(data{i+1})];
 		else
 			testingset = [testingset; matrix(i,:)];
 			temptestingset = [temptestingset; transpose(data{i+1})];
