@@ -1,4 +1,4 @@
-function decisiontree (inputFileName, trainingSetSize, numberOfTrials, verbose)
+function [ret] = decisiontree (inputFileName, trainingSetSize, numberOfTrials, verbose)
 	disp(sprintf('Input File Name : %s\n', inputFileName));
 	disp(sprintf('Traning Set Size: %d\n', trainingSetSize));
 	disp(sprintf('Number Of Trials: %d\n', numberOfTrials));
@@ -39,6 +39,6 @@ function decisiontree (inputFileName, trainingSetSize, numberOfTrials, verbose)
 			testingset = [testingset; matrix(i,:)]
 		end
 	end
-	
 
+	return 0;
 end
