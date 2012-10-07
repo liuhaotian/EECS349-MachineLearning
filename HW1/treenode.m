@@ -3,6 +3,6 @@ classdef treenode
 		childtrue = [];
 		childfalse = [];
 		label = -1;
-		attribute = -1;
+		attr = -1;
 	end
 end
