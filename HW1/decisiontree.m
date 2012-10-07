@@ -53,8 +53,8 @@ function decisiontree (inputFileName, trainingSetSize, numberOfTrials, verbose)
 
 
 		%	calc all
-		temptrainingset = {data{1}{:},'ID3','Prior'};
-		temptestingset = {data{1}{:},'ID3','Prior'};
+		temptrainingset = {{data{1}{:},'ID3','Prior'};{data{1}{:},'ID3','Prior'}}
+		temptestingset = {{data{1}{:},'ID3','Prior'};{data{1}{:},'ID3','Prior'}}
 		for i = 1:length(tempdata)
 			if tempdata(i) == 1
 				if classify(root, matrix(i,:))
