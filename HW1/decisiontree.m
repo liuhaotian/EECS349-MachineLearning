@@ -40,10 +40,8 @@ function decisiontree (inputFileName, trainingSetSize, numberOfTrials, verbose)
 		for i = 1:length(tempdata)
 			if tempdata(i) == 1
 				trainingset = [trainingset; matrix(i,:)];
-				temptrainingset = [temptrainingset; transpose(data{i+1})];
 			else
 				testingset = [testingset; matrix(i,:)];
-				temptestingset = [temptestingset; transpose(data{i+1})];
 			end
 		end
 
