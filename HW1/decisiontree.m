@@ -23,4 +23,22 @@ function decisiontree (inputFileName, trainingSetSize, numberOfTrials, verbose)
 		end
 	end
 
+	%	random matrix
+	tempdata = zeros(1, length(data) - 1);
+	while sum(tempdata) ~= trainingSetSize
+		tempdata(random('unid',length(data) - 1)) = 1;
+	end
+
+	%	training set & testing set
+	trainingset = [];
+	testingset  = [];
+	for i = 1:length(tempdata)
+		if tempdata(i) == 1
+			trainingset = [trainingset; matrix(i,:)]
+		else
+			testingset = [testingset; matrix(i,:)]
+		end
+	end
+	
+
 end
