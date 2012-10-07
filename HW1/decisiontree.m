@@ -23,6 +23,12 @@ function decisiontree (inputFileName, trainingSetSize, numberOfTrials, verbose)
 		end
 	end
 
+	%	global variables for id3 counter, id3 hit, prior counter, prior hit
+	gid3 = 0;
+	gid3hit = 0;
+	gpri = 0;
+	gprihit = 0;
+
 	for j = 1:numberOfTrials
 
 		%	trials info
@@ -49,6 +55,7 @@ function decisiontree (inputFileName, trainingSetSize, numberOfTrials, verbose)
 		root = id3(trainingset, 1:length(data{1})-1, length(data{1}));
 
 		%	print tree
+		disp('Decision Tree:');
 		printtree(root, '|', data{1});
 
 
@@ -77,11 +84,24 @@ function decisiontree (inputFileName, trainingSetSize, numberOfTrials, verbose)
 		
 		%	verbose debug
 		if verbose == '1'
-			disp('Training Set:');
+			disp('\nTraining Set:');
 			disp(temptrainingset);
 			disp('Testing Set:');
 			disp(temptestingset);
 		end
 
+		%	calc correctness
+		total = length(testingset);
+		numofcurrect = 0;
+		for i = 1:total
+			numofcurrect = numofcurrect + classify(root, testingset(i,:));
+		end
+		disp(sprintf('ID3 Correctnes: %d/%d', numofcurrect, total));
+		gid3 = gid3 + total;
+		gid3hit = gid3hit + numofcurrect;
+
 	end
+
+	disp(sprintf('Mean perf for ID3: %.2f\n', gid3hit/gid3));
+	disp(sprintf('Mean perf for Prior: %.2f\n', gprihit/gpri));
 end
