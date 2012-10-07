@@ -17,9 +17,9 @@ function decisiontree (inputFileName, trainingSetSize, numberOfTrials, verbose)
 
 	%	form matrix
 	matrix = ones(length(data) - 1, length(data{1}));
-	for i = 2:length(data)-1
+	for i = 1:length(data)-1
 		for j = 1:length(data{1})
-			matrix(i,j) = strcmp(data{i}{j},'true');
+			matrix(i,j) = strcmp(data{i+1}{j},'true');
 		end
 	end
 
