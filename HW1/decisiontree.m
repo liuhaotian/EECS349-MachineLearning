@@ -53,8 +53,8 @@ function decisiontree (inputFileName, trainingSetSize, numberOfTrials, verbose)
 
 
 		%	calc all
-		temptrainingset = [data{1}{:},'ID3','Prior'];
-		temptestingset = [data{1}{:},'ID3','Prior'];
+		temptrainingset = {data{1}{:},'ID3','Prior'};
+		temptestingset = {data{1}{:},'ID3','Prior'};
 		for i = 1:length(tempdata)
 			if tempdata(i) == 1
 				if classify(root, matrix(i,:))
@@ -63,7 +63,7 @@ function decisiontree (inputFileName, trainingSetSize, numberOfTrials, verbose)
 					id3score = 'False';
 				end
 				priorscore = 'True';
-				temptrainingset = [temptrainingset; data{i+1}{:}, id3score, priorscore];
+				temptrainingset = {temptrainingset; data{i+1}{:}, id3score, priorscore};
 			else
 				if classify(root, matrix(i,:))
 					id3score = 'True';
@@ -71,7 +71,7 @@ function decisiontree (inputFileName, trainingSetSize, numberOfTrials, verbose)
 					id3score = 'False';
 				end
 				priorscore = 'True';
-				temptestingset = [temptestingset; data{i+1}{:}, id3score, priorscore];
+				temptestingset = {temptestingset; data{i+1}{:}, id3score, priorscore};
 			end
 		end
 		
