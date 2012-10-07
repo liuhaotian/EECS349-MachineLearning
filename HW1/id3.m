@@ -16,10 +16,10 @@ function root = id3 (examples, attributes, target_attr)
 		if isempty(examplestrue)
 			tempnode = treenode;
 			tempnode.label = sum(examples(:,target_attr) > 0) > sum(examples(:,target_attr) < 1);
-			root.childture = tempnode;
+			root.childtrue = tempnode;
 		else
 			tempnode = id3(examplestrue, newattributes, target_attr);
-			root.childture = tempnode;
+			root.childtrue = tempnode;
 		end
 		
 		examplesfalse = examples(find(examples(:,root.attr)<1),:);
