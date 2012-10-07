@@ -18,7 +18,8 @@ function root = id3 (examples, attributes, target_attr)
 			tempnode.label = sum(examples(:,target_attr) > 0) > sum(examples(:,target_attr) < 1);
 			root.childture = tempnode;
 		else
-			root.childture = id3(examplestrue, newattributes, target_attr);
+			tempnode = id3(examplestrue, newattributes, target_attr);
+			root.childture = tempnode;
 		end
 		
 		examplesfalse = examples(find(examples(:,root.attr)<1),:);
@@ -27,7 +28,8 @@ function root = id3 (examples, attributes, target_attr)
 			tempnode.label = sum(examples(:,target_attr) > 0) > sum(examples(:,target_attr) < 1);
 			root.childfalse = tempnode;
 		else
-			root.childfalse = id3(examplesfalse, newattributes, target_attr);
+			tempnode = id3(examplesfalse, newattributes, target_attr);
+			root.childfalse = tempnode;
 		end
 	end
 end
