@@ -16,10 +16,10 @@ function decisiontree (inputFileName, trainingSetSize, numberOfTrials, verbose)
 	tempdata = fclose(fd_in)
 
 	%	form matrix
-	matrix = ones(length(data) - 1, length(data{1}))
+	matrix = ones(length(data) - 1, length(data{1}));
 	for i = 2:length(data)
 		for j = 1:length(data{1})
-			matrix = strcmp(data{i}{j},'true')
+			matrix(i,j) = strcmp(data{i}{j},'true');
 		end
 	end
 
