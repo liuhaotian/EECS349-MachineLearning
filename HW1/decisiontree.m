@@ -51,7 +51,7 @@ function decisiontree (inputFileName, trainingSetSize, numberOfTrials, verbose)
 	end
 
 	%	get decision tree
-	root = id3(matrix, 1:length(data{1})-1, length(data{1}));
+	root = id3(trainingset, 1:length(data{1})-1, length(data{1}));
 
 	%	print tree
 	printtree(root, '|', data{1});
