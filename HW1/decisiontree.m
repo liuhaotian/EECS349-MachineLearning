@@ -23,36 +23,67 @@ function decisiontree (inputFileName, trainingSetSize, numberOfTrials, verbose)
 		end
 	end
 
-	%	random matrix
-	tempdata = zeros(1, length(data) - 1);
-	while sum(tempdata) ~= trainingSetSize
-		tempdata(random('unid',length(data) - 1)) = 1;
-	end
+	for j = 1:numberOfTrials
 
-	%	training set & testing set
-	trainingset = [];
-	temptrainingset = transpose(data{1});
-	testingset  = [];
-	temptestingset = transpose(data{1});
-	for i = 1:length(tempdata)
-		if tempdata(i) == 1
-			trainingset = [trainingset; matrix(i,:)];
-			temptrainingset = [temptrainingset; transpose(data{i+1})];
-		else
-			testingset = [testingset; matrix(i,:)];
-			temptestingset = [temptestingset; transpose(data{i+1})];
+		%	trials info
+		disp(sprintf('=========== %dth trial ==========', j));
+
+		%	random matrix
+		tempdata = zeros(1, length(data) - 1);
+		while sum(tempdata) ~= trainingSetSize
+			tempdata(random('unid',length(data) - 1)) = 1;
 		end
-	end
-	if verbose == '1'
-		disp('Training Set:');
-		disp(temptrainingset);
-		disp('Testing Set:');
-		disp(temptestingset);
-	end
 
-	%	get decision tree
-	root = id3(trainingset, 1:length(data{1})-1, length(data{1}));
+		%	training set & testing set
+		trainingset = [];
+		testingset  = [];
+		for i = 1:length(tempdata)
+			if tempdata(i) == 1
+				trainingset = [trainingset; matrix(i,:)];
+				temptrainingset = [temptrainingset; transpose(data{i+1})];
+			else
+				testingset = [testingset; matrix(i,:)];
+				temptestingset = [temptestingset; transpose(data{i+1})];
+			end
+		end
 
-	%	print tree
-	printtree(root, '|', data{1});
+		%	get decision tree
+		root = id3(trainingset, 1:length(data{1})-1, length(data{1}));
+
+		%	print tree
+		printtree(root, '|', data{1});
+
+
+		%	calc all
+		temptrainingset = [data{1}{:},'ID3','Prior'];
+		temptestingset = [data{1}{:},'ID3','Prior'];
+		for i = 1:length(tempdata)
+			if tempdata(i) == 1
+				if classify(root, matrix(i,:))
+					id3score = 'True';
+				else
+					id3score = 'False';
+				end
+				priorscore = 'True';
+				temptrainingset = [temptrainingset; data{i+1}{:}, id3score, priorscore];
+			else
+				if classify(root, matrix(i,:))
+					id3score = 'True';
+				else
+					id3score = 'False';
+				end
+				priorscore = 'True';
+				temptestingset = [temptestingset; data{i+1}{:}, id3score, priorscore];
+			end
+		end
+		
+		%	verbose debug
+		if verbose == '1'
+			disp('Training Set:');
+			disp(temptrainingset);
+			disp('Testing Set:');
+			disp(temptestingset);
+		end
+
+	end
 end
