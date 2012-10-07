@@ -91,7 +91,7 @@ function decisiontree (inputFileName, trainingSetSize, numberOfTrials, verbose)
 		end
 
 		%	calc correctness
-		total = length(testingset);
+		total = length(testingset(:,1));
 		numofcurrect = 0;
 		for i = 1:total
 			numofcurrect = numofcurrect + (classify(root, testingset(i,:)) == testingset(i,length(testingset(1,:))));
