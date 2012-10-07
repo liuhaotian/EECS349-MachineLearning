@@ -1,8 +1,8 @@
 function decisiontree (inputFileName, trainingSetSize, numberOfTrials, verbose)
-	disp(sprintf('Input File Name : %s\n', inputFileName));
-	disp(sprintf('Traning Set Size: %d\n', trainingSetSize));
-	disp(sprintf('Number Of Trials: %d\n', numberOfTrials));
-	disp(sprintf('Verbose Mode    : %s\n', verbose));
+	disp(sprintf('Input File Name : %s', inputFileName));
+	disp(sprintf('Traning Set Size: %d', trainingSetSize));
+	disp(sprintf('Number Of Trials: %d', numberOfTrials));
+	disp(sprintf('Verbose Mode    : %s', verbose));
 
 
 	%	read file
@@ -54,5 +54,5 @@ function decisiontree (inputFileName, trainingSetSize, numberOfTrials, verbose)
 	root = id3(matrix, 1:length(data{1})-1, length(data{1}));
 
 	%	print tree
-	printtree(root, '', data{1});
+	printtree(root, '|', data{1});
 end
