@@ -101,7 +101,7 @@ function decisiontree (inputFileName, trainingSetSize, numberOfTrials, verbose)
 		gid3hit = gid3hit + numofcurrect;
 
 	end
-
-	disp(sprintf('Mean perf for ID3: %.2f\n', gid3hit/gid3));
-	disp(sprintf('Mean perf for Prior: %.2f\n', gprihit/gpri));
+	disp('\n=========== Performance ==========');
+	disp(sprintf('Mean perf for ID3: %.2f', gid3hit/gid3));
+	disp(sprintf('Mean perf for Prior: %.2f', gprihit/gpri));
 end
