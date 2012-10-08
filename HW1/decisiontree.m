@@ -23,6 +23,12 @@ function decisiontree (inputFileName, trainingSetSize, numberOfTrials, verbose)
 		disp('At least one testing example needed!');
 		exit;
 	end
+	if verbose ~= '0' || verbose ~= '1'
+		disp('Verbose needs ''0'' or ''1'' as an char!');
+	end
+	if numberOfTrials <= 0
+		disp('Number of Trials should be a positive number!');
+	end
 
 	%	form matrix
 	matrix = ones(length(data) - 1, length(data{1}));
