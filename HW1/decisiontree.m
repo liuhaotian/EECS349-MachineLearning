@@ -62,7 +62,7 @@ function decisiontree (inputFileName, trainingSetSize, numberOfTrials, verbose)
 		%	calc all
 		temptrainingset = [transpose(data{1}),'ID3','Prior'];
 		temptestingset = [transpose(data{1}),'ID3','Prior'];
-		prior = sum(matrix(:,length(data{1}))) > length(tempdata) /2;
+		prior = sum(trainingset(:,length(data{1}))) > length(trainingset) /2;
 		if prior
 			priorscore = 'true';
 		else
