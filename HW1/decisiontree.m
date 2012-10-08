@@ -23,7 +23,7 @@ function decisiontree (inputFileName, trainingSetSize, numberOfTrials, verbose)
 		disp('At least one testing example needed!');
 		return;
 	end
-	if verbose ~= '0' || verbose ~= '1'
+	if verbose ~= '0' && verbose ~= '1'
 		disp('Verbose needs ''0'' or ''1'' as an char!');
 		return;
 	end
