@@ -62,6 +62,12 @@ function decisiontree (inputFileName, trainingSetSize, numberOfTrials, verbose)
 		%	calc all
 		temptrainingset = [transpose(data{1}),'ID3','Prior'];
 		temptestingset = [transpose(data{1}),'ID3','Prior'];
+		prior = sum(matrix(:,length(data{1}))) > length(tempdata) /2;
+		if prior
+			priorscore = 'true';
+		else
+			priorscore = 'false';
+		end
 		for i = 1:length(tempdata)
 			if tempdata(i) == 1
 				if classify(root, matrix(i,:))
@@ -69,7 +75,6 @@ function decisiontree (inputFileName, trainingSetSize, numberOfTrials, verbose)
 				else
 					id3score = 'false';
 				end
-				priorscore = 'true';
 				temptrainingset = [temptrainingset;transpose(data{i+1}), id3score, priorscore];
 			else
 				if classify(root, matrix(i,:))
@@ -77,7 +82,6 @@ function decisiontree (inputFileName, trainingSetSize, numberOfTrials, verbose)
 				else
 					id3score = 'false';
 				end
-				priorscore = 'true';
 				temptestingset = [temptestingset;transpose(data{i+1}), id3score, priorscore];
 			end
 		end
@@ -93,12 +97,17 @@ function decisiontree (inputFileName, trainingSetSize, numberOfTrials, verbose)
 		%	calc correctness
 		total = length(testingset(:,1));
 		numofcurrect = 0;
+		numofcurrectprior = 0;
 		for i = 1:total
 			numofcurrect = numofcurrect + (classify(root, testingset(i,:)) == testingset(i,length(testingset(1,:))));
+			numofcurrectprior = numofcurrectprior + (prior == testingset(i,length(testingset(1,:))));
 		end
-		disp(sprintf('ID3 Correctnes: %d/%d', numofcurrect, total));
+		disp(sprintf('ID3   Correctnes: %d/%d', numofcurrect, total));
+		disp(sprintf('Prior Correctnes: %d/%d', numofcurrectprior, total));
 		gid3 = gid3 + total;
+		gpri = gpri + total;
 		gid3hit = gid3hit + numofcurrect;
+		gprihit = gprihit + numofcurrectprior;
 
 	end
 	disp(sprintf('\n=========== Performance =========='));
