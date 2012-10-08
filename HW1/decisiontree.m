@@ -15,6 +15,15 @@ function decisiontree (inputFileName, trainingSetSize, numberOfTrials, verbose)
 	end
 	tempdata = fclose(fd_in);
 
+	%	check parameter
+	if trainingSetSize < 1
+		disp('At least one traning example needed!');
+		exit;
+	elseif trainingSetSize >= length(data) - 1
+		disp('At least one testing example needed!');
+		exit;
+	end
+
 	%	form matrix
 	matrix = ones(length(data) - 1, length(data{1}));
 	for i = 1:length(data)-1
