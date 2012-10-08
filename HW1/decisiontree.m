@@ -18,18 +18,18 @@ function decisiontree (inputFileName, trainingSetSize, numberOfTrials, verbose)
 	%	check parameter
 	if trainingSetSize < 1
 		disp('At least one traning example needed!');
-		exit;
+		return;
 	elseif trainingSetSize >= length(data) - 1
 		disp('At least one testing example needed!');
-		exit;
+		return;
 	end
 	if verbose ~= '0' || verbose ~= '1'
 		disp('Verbose needs ''0'' or ''1'' as an char!');
-		exit;
+		return;
 	end
 	if numberOfTrials <= 0
 		disp('Number of Trials should be a positive number!');
-		exit;
+		return;
 	end
 
 	%	form matrix
