@@ -1,6 +1,6 @@
-function [ output_args ] = LevenshteinDistance( input_args )
-%LEVENSHTEINDISTANCE Summary of this function goes here
-%   Detailed explanation goes here
+function dist = LevenshteinDistance( s,t,deletionCost,insertionCost,substitutionCost )
+    dist = 0;
+    
 
 
 end
