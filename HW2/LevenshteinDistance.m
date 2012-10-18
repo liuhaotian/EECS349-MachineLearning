@@ -16,13 +16,13 @@ function dist = LevenshteinDistance(s, t, deletionCost, insertionCost, substitut
 	for j = 2:t_size+1
 		for i = 2:s_size+1
 			if s(i-1) == t(j-1)
-				d(i,j) = d(i-1,j-1)
+				d(i,j) = d(i-1,j-1);
 			else
 				d(i,j) = min([
 							d(i-1,j) + deletionCost,
 							d(i,j-1) + insertionCost,
 							d(i-1,j-1) + substitutionCost
-							])
+							]);
 			end
 		end
 	end
