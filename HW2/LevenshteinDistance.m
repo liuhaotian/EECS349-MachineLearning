@@ -7,6 +7,19 @@ function dist = LevenshteinDistance(s, t, deletionCost, insertionCost, substitut
 	s_size = length(s);
 	t_size = length(t);
 
+	%	check input
+	if s_size == 0
+		return
+	elseif t_size == 0
+		return
+	elseif deletionCost < 0
+		return
+	elseif insertionCost < 0
+		return
+	elseif substitutionCost < 0
+		return
+	end
+
 	%	build the dist matrix
 	d = zeros(s_size + 1, t_size + 1);
 	d(1:s_size + 1, 1) = (0:s_size) * deletionCost;
