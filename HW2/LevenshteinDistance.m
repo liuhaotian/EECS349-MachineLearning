@@ -9,9 +9,21 @@ function dist = LevenshteinDistance(s, t, deletionCost, insertionCost, substitut
 
 	%	build the dist matrix
 	d = zeros(s_size + 1, t_size + 1);
-	d(1:s_size + 1, 1) = [0:s_size] * deletionCost;
-	d(1, 1:t_size + 1) = [0:t_size] * insertionCost;
+	d(1:s_size + 1, 1) = (0:s_size) * deletionCost;
+	d(1, 1:t_size + 1) = (0:t_size) * insertionCost;
  
+	%	calc the dist
+	for j = 2:t_size+1
+		for i = 2:s_size+1
+			if s(i-1) == t(j-1)
+				d(i,j) = d(i-1,j-1)
+			else
+				d(i,j) = min([
+							d(i-1,j) + deletionCost,
+							d(i,j-1) + insertionCost,
+							d(i-1,j-1) + substitutionCost
+							])
+			end
 
-
+	dist = d(s_size, t_size);
 end
