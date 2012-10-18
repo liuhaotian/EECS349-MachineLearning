@@ -14,7 +14,7 @@ function word_out = FindClosestWord(word_in, dict_array)
 
 	mini = word_size * deletionCost;
 	for i = 1:dict_size
-		if length(dict_array{i}) < mini / insertionCost + word_size || length(dict_array{i}) > word_size - mini / deletionCost
+		if length(dict_array{i}) < mini / insertionCost + word_size && length(dict_array{i}) > word_size - mini / deletionCost
 			[mini, index] = min([LevenshteinDistance(word_in, dict_array{i}, deletionCost, insertionCost, substitutionCost),mini]);
 			if index == 1
 				word_out = dict_array{i};
