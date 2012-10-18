@@ -27,5 +27,5 @@ function dist = LevenshteinDistance(s, t, deletionCost, insertionCost, substitut
 		end
 	end
 
-	dist = d(s_size, t_size);
+	dist = d(s_size+1, t_size+1);
 end
