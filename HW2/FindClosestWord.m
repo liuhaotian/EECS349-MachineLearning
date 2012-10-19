@@ -1,6 +1,17 @@
-function word_out = FindClosestWord(word_in, dict_array)
+function word_out = FindClosestWord(word_in, dict_array, deletionCost, insertionCost, substitutionCost)
 	%	init the word_out
 	word_out = dict_array{1};
+
+	%	default value
+	if ~exist('deletionCost')
+		deletionCost = 2;
+	end
+	if ~exist('insertionCost')
+		insertionCost = 2;
+	end
+	if ~exist('substitutionCost')
+		substitutionCost = 2;
+	end
 
 	%	get the length of dict, word
 	dict_size = length(dict_array);
