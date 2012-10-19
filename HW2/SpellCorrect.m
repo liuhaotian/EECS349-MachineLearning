@@ -31,6 +31,7 @@ function SpellCorrect(ToBeSpellCheckedFileName, DictFileName)
 			oneword = [];
 			fprintf(fout, '%c', fin_raw(i));
 		end
+		i = i + 1;
 	end
 
 	%	safely close the output
