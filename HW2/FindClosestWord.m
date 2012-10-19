@@ -6,6 +6,11 @@ function word_out = FindClosestWord(word_in, dict_array)
 	dict_size = length(dict_array);
 	word_size = length(word_in);
 
+	%	handle error
+	if word_size == 0
+		word_out = '';
+	end
+
 	%	set the cost
 	deletionCost = 2;
 	insertionCost = 2;
