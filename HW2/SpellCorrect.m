@@ -27,7 +27,7 @@ function SpellCorrect(ToBeSpellCheckedFileName, DictFileName)
 		if (double('A') <= double(fin_raw(i)) && double(fin_raw(i)) <= double('Z')) || (double('a') <= double(fin_raw(i)) && double(fin_raw(i)) <= double('z'))
 			oneword = [oneword, fin_raw(i)];
 		else
-			fprintf(fout, '%s', FindCloestWord(oneword, dict));
+			fprintf(fout, '%s', FindClosestWord(oneword, dict));
 			oneword = [];
 			fprintf(fout, '%c', fin_raw(i));
 		end
