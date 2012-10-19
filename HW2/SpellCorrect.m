@@ -22,7 +22,7 @@ function SpellCorrect(ToBeSpellCheckedFileName, DictFileName)
 	disp(sprintf('The output file would be %s/corrected.txt\n', pwd));
 
 	oneword = [];
-	i = 0;
+	i = 1;
 	while i <= length(fin_raw)
 		if double('A') <= double(fin_raw(i)) <= double('Z') || double('a') <= double(fin_raw(i)) <= double('z')
 			oneword = [oneword, fin_raw(i)];
