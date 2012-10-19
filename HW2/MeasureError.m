@@ -12,7 +12,7 @@ function errorRate = MeasureError(typo, trueword, dictionary)
 	end
 
 	for i = 1:typo_size
-		if trueword(i) ~= FindClosestWord(typo(i), dictionary)
+		if trueword{i} ~= FindClosestWord(typo{i}, dictionary)
 			errorCount = errorCount + 1;
 		end
 	end
