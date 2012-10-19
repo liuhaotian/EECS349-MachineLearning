@@ -6,7 +6,7 @@ function getResult(deletionCost, insertionCost, substitutionCost)
 	fclose(fdict);
 
 	%	read typo
-	fwiki = fopen('wikipediaclean.txt');
+	fwiki = fopen('wikipediatypoclean.txt');
 	wiki = textscan(fwiki, '%s\t%s');
 	fclose(fwiki);
 
