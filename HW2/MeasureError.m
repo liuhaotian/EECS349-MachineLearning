@@ -1,7 +1,18 @@
-function errorRate = MeasureError(typo, trueword, dictionary)
+function errorRate = MeasureError(typo, trueword, dictionary, deletionCost, insertionCost, substitutionCost)
 	%	init the return value
 	errorRate = 0;
 	errorCount = 0;
+
+	%	default value
+	if ~exist('deletionCost')
+		deletionCost = 2;
+	end
+	if ~exist('insertionCost')
+		insertionCost = 2;
+	end
+	if ~exist('substitutionCost')
+		substitutionCost = 2;
+	end
 
 	%	check input
 	typo_size = length(typo);
@@ -12,7 +23,7 @@ function errorRate = MeasureError(typo, trueword, dictionary)
 	end
 
 	for i = 1:typo_size
-		if ~strcmp(trueword{i},FindClosestWord(typo{i}, dictionary))
+		if ~strcmp(trueword{i},FindClosestWord(typo{i}, dictionary, deletionCost, insertionCost, substitutionCost))
 			errorCount = errorCount + 1;
 		end
 	end
