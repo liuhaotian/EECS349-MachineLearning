@@ -22,12 +22,6 @@ function word_out = FindClosestWord(word_in, dict_array, deletionCost, insertion
 		word_out = '';
 	end
 
-	%	set the cost
-	deletionCost = 2;
-	insertionCost = 2;
-	substitutionCost = 2;
-
-
 	mini = word_size * deletionCost;
 	for i = 1:dict_size
 		if length(dict_array{i}) < mini / insertionCost + word_size && length(dict_array{i}) > word_size - mini / deletionCost
