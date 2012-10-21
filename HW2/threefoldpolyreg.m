@@ -23,7 +23,7 @@ function threefoldpolyreg()
 	mse = zeros(10,3);
 	for k = 1:10
 		for i = 1:3
-			mse(k,i) = std(polyval((ployfit(X(foldarray ~= i), Y(foldarray ~= i), k-1), X(ployfit == i)) .- Y(ployfit == i)));
+			mse(k,i) = std(polyval(ployfit(X(foldarray ~= i), Y(foldarray ~= i), k-1), X(ployfit == i)) .- Y(ployfit == i));
 		end
 	end
 	plot(k.-1, mean(mse,2));
