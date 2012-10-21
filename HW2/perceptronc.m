@@ -12,7 +12,7 @@ function [w,k] = perceptronc(w_init,X,Y)
 		k = k + 1;
 		if sign(w*X(mod(k, length(X)) + 1,:)') ~= Y(mod(k, length(X)) + 1)
 			w = w + X(mod(k, length(X)) + 1,:) * Y(mod(k, length(X)) + 1);
-            plot(X(Y==1,1),X(Y==1,2),'o',X(Y==-1,1),X(Y==-1,2),'o',X(:,1),-w(3)/w(2)-w(1)/w(2)*X(:,1),'x');
+            plot(X(Y==1,1),X(Y==1,2),'o',X(Y==-1,1),X(Y==-1,2),'o',X(:,1),-w(3)/w(2)-w(1)/w(2)*X(:,1));
 		end 
 	end
 
