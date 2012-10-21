@@ -4,7 +4,8 @@ function [w,k] = perceptronc(w_init,X,Y)
 	k = 0;
 
 	%	transform
-	X = abs(X - 1.5);
+	X = [X(:,1), X(:,1).^2, X(:,2)];
+	w = [w(:,1), w(:,1).^2, w(:,2)];
 
 	%	Sequential Perceptron Algo
 	while sum(sign(polyval(w, X(:,1))) ~= Y)
