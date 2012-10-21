@@ -6,8 +6,8 @@ function [w,k] = perceptrona(w_init,X,Y)
 	%	Sequential Perceptron Algo
 	while sum(((X > w) - (X < w)) ~= Y)
 		k = mod(k, length(X)) + 1;
-		if polyval(w, X(k)) ~= Y(k)
-			w = w + X(k) .* Y(k);
+		if ((X(k) > w) - (X(k) < w)) ~= Y(k)
+			w = w + (X(k) - w) .* Y(k);
 		end 
 	end
 
