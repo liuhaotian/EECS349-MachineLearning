@@ -4,10 +4,10 @@ function [w,k] = perceptrona(w_init,X,Y)
 	k = 0;
 
 	%	Sequential Perceptron Algo
-	while sum(((X > w) - (X < w)) ~= Y)
+	while sum(sign(polyval(w, X(:,1))) ~= Y)
 		k = mod(k, length(X)) + 1;
-		if ((X(k) > w) - (X(k) < w)) ~= Y(k)
-			w = w + (X(k) - w) .* Y(k);
+		if sign(polyval(w, X(k,1))) ~= Y(k)
+			w = w + X(k,:) * Y(k);
 		end 
 	end
 
