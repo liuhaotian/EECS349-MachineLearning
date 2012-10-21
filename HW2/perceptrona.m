@@ -5,9 +5,9 @@ function [w,k] = perceptrona(w_init,X,Y)
 
 	%	Sequential Perceptron Algo
 	while sum(sign(polyval(w, X(:,1))) ~= Y)
-		k = mod(k, length(X)) + 1;
-		if sign(polyval(w, X(k,1))) ~= Y(k)
-			w = w + X(k,:) * Y(k);
+		k = k + 1;
+		if sign(polyval(w, X(mod(k, length(X)) + 1,1))) ~= Y(mod(k, length(X)) + 1)
+			w = w + X(mod(k, length(X)) + 1,:) * Y(mod(k, length(X)) + 1);
 		end 
 	end
 
