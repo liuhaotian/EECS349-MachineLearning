@@ -26,6 +26,6 @@ function threefoldpolyreg()
 			mse(k,i) = std(polyval(polyfit(X(foldarray ~= i), Y(foldarray ~= i), k-1), X(foldarray == i)) - Y(foldarray == i));
 		end
 	end
-	plot(k-1, mean(mse,2));
+	plot(0:9, mean(mse,2));
 
 end
