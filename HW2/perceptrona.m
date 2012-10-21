@@ -8,7 +8,7 @@ function [w,k] = perceptrona(w_init,X,Y)
 		k = k + 1;
 		if sign(polyval(w, X(mod(k, length(X)) + 1,1))) ~= Y(mod(k, length(X)) + 1)
 			w = w + X(mod(k, length(X)) + 1,:) * Y(mod(k, length(X)) + 1);
-			plot(X(Y==1,1),X(Y==1,2),'o',X(Y==-1,1),X(Y==-1,2),'o',-w(2)/w(1),-1.5:0.1:1.5,'x');
+			plot(X(Y==1,1),Y(Y==1),'o',X(Y==-1,1),Y(Y==-1),'o',-w(2)/w(1),-1.5:0.1:1.5,'x');
 		end 
 	end
 
