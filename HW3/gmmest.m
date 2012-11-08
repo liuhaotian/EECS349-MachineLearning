@@ -20,6 +20,8 @@ function [mu, sigmasq, wt, L] = gmmest(X, mu_init, sigmasq_init, wt_init, its)
         %	calc the sigmasq
         sigmasq = (sum(p .* (ones(size(mu))' * X - mu' * ones(size(X))).^2, 2) ./ sum(p, 2))';
 	end
-	L = 0;
+	%	calc the log-likelihood
+	L = exp(-(ones(size(mu))' * X - mu' * ones(size(X))).^2 ./ 2 ./ (sigmasq' * ones(size(X)))) ./ sqrt(2 .* pi .* (sigmasq' * ones(size(X)))) .* (wt' * ones(size(X)));
+	L = sum(log10(sum(L, 1)), 2)
 
 end
