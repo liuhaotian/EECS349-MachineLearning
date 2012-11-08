@@ -1,7 +1,25 @@
 function [mu, sigmasq, wt, L] = gmmest(X, mu_init, sigmasq_init, wt_init, its)
-    pre_mu      = mu_init;
-    pre_sigmasq = sigmasq_init;
-    pre_wt      = wt_init;
-    %for i = 1:its
-        p = exp(-(ones(size(pre_mu))' * X .- pre_mu' * ones(size(X))).^2 ./ 2 ./ (pre_sigmasq' * ones(size(X)))) ./ sqrt(2 .* pi .* (pre_sigmasq * ones(size(X))));
+    mu     	= mu_init;
+    sigmasq = sigmasq_init;
+    wt      = wt_init;
+    for i = 1:its
+    	%	calc the normpdf
+        p = exp(-(ones(size(mu))' * X .- mu' * ones(size(X))).^2 ./ 2 ./ (sigmasq' * ones(size(X)))) ./ sqrt(2 .* pi .* (sigmasq * ones(size(X)))) .* (wt' * ones(size(X)));
+        p = p ./ (ones(size(mu))' * sum(p, 1));
+        %	at this point, we get the p(j,i), K-by-N, the normalized p.
+        
+        %	for some p, 0/0 = NaN, but actually it is 0
+        p(p == NaN) = 0;
+
+        %	calc the weight
+        wt = sum(p, 2) / size(X, 2);
+
+        %	calc the mu
+        mu = sum(q .*  (ones(size(mu))' * X), 2) ./ sum(p, 2);
+
+        %	calc the sigmasq
+        sigmasq = sum(q .* (ones(size(mu))' * X .- mu' * ones(size(X))).^2, 2) ./ sum(p, 2);
+	end
+	L = 0;
+
 end
