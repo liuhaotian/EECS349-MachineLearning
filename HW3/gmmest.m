@@ -9,7 +9,7 @@ function [mu, sigmasq, wt, L] = gmmest(X, mu_init, sigmasq_init, wt_init, its)
         %	at this point, we get the p(j,i), K-by-N, the normalized p.
         
         %	for some p, 0/0 = NaN, but actually it is 0
-        p(p == NaN) = 0;
+        p(~((p > 0) + (p == 0))) = 0;
 
         %	calc the weight
         wt = sum(p, 2) / size(X, 2);
