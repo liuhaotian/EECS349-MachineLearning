@@ -4,7 +4,7 @@ function [mu, sigmasq, wt, L] = gmmest(X, mu_init, sigmasq_init, wt_init, its)
     wt      = wt_init;
     for i = 1:its
     	%	calc the normpdf
-        p = exp(-(ones(size(mu))' * X - mu' * ones(size(X))).^2 ./ 2 ./ (sigmasq' * ones(size(X)))) ./ sqrt(2 .* pi .* (sigmasq * ones(size(X)))) .* (wt' * ones(size(X)));
+        p = exp(-(ones(size(mu))' * X - mu' * ones(size(X))).^2 ./ 2 ./ (sigmasq' * ones(size(X)))) ./ sqrt(2 .* pi .* (sigmasq' * ones(size(X)))) .* (wt' * ones(size(X)));
         p = p ./ (ones(size(mu))' * sum(p, 1));
         %	at this point, we get the p(j,i), K-by-N, the normalized p.
         
