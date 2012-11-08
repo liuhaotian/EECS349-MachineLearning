@@ -18,7 +18,7 @@ function [mu, sigmasq, wt, L] = gmmest(X, mu_init, sigmasq_init, wt_init, its)
         mu = sum(q .*  (ones(size(mu))' * X), 2) ./ sum(p, 2);
 
         %	calc the sigmasq
-        sigmasq = sum(q .* (ones(size(mu))' * X .- mu' * ones(size(X))).^2, 2) ./ sum(p, 2);
+        sigmasq = sum(q .* (ones(size(mu))' * X - mu' * ones(size(X))).^2, 2) ./ sum(p, 2);
 	end
 	L = 0;
 
