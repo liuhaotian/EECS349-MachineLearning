@@ -14,6 +14,6 @@ function Y = gmmclassify(X, mu1, sigmasq1, wt1, mu2, sigmasq2, wt2, p1)
     %   get the index of dist. when each x gets its own maximum p
     [maxp, indexp] = max(p);
 
-    %   if less then the size(mu, 2), it belongs to class1(from mu1), else belongs to class2(from mu2)
-    Y = indexp <= size(mu1, 2);
+    %   if larger then the size(mu1, 2), it belongs to class2(from mu2), else belongs to class1(from mu1)
+    Y = indexp > size(mu1, 2);
 end
